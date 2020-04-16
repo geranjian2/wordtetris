@@ -21,10 +21,8 @@ class WordT extends Controller
         ], 200);
     }
     public function rotate(Request $request){
-        // $matriz = json_decode($request->get('tetramino'));
-        $matriz[0]  = [0,1,0];
-        $matriz[1]  = [1,1,0];
-        $matriz[2]  = [0,1,0];
+        $matriz = json_decode($request->get('tetramino'));
+        // dd($matriz);
         for( $y=0;$y<count($matriz);++$y){
             for($x=0;$x<$y;$x++){
                 [
