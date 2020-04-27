@@ -33,11 +33,26 @@ class WordT extends Controller
                         ]
                     ];
 
-    public function  WordT()
+    public function  WordT(Request $request)
     {
+        //Valida los datos enviados
+        $validaror = Validator::make($request->all(), [
+            'posicionX' => 'required|max:2|regex:([0-9])',
+            'posicionY' => 'required|max:2|regex:([0-9])'           
+        ]);
+        
+        //Valida si hay error
+        if($validaror->fails()){
+            return response()->json([
+                'error' => $validaror->errors()->first(),
+            ], 401);
+        }
+
         $matriz = static::MATRICES[0];
         return response()->json([
-            'tetramino_t' => $matriz
+            'tetramino_t' => $matriz,
+            'x' => (int)$request->get('posicionX'),
+            'y' => (int)$request->get('posicionY')
         ], 200);
     }
 
@@ -46,7 +61,9 @@ class WordT extends Controller
         //Valida los datos enviados
         $validaror = Validator::make($request->all(), [
             'tetramino' => 'required|max:25|regex:(^(\[)+(\[)+[0-1]+(\,)+[0-1]+(\,)+[0-1]+(\])+(\,)+(\[)+[0-1]+(\,)+[0-1]+(\,)+[0-1]+(\])+(\,)+(\[)+[0-1]+(\,)+[0-1]+(\,)+[0-1]+(\])+(\]))',
-            'giro' => 'required|regex:([0-1]{1})'
+            'giro' => 'required|regex:([0-1]{1})',
+            'posicionX' => 'required|max:2|regex:([0-9])',
+            'posicionY' => 'required|max:2|regex:([0-9])'
         ]);
         
         //Valida si hay error
@@ -78,7 +95,7 @@ class WordT extends Controller
                     }else{
                         $pos = $key+$giro;
                     }
-                    
+                    //Asigna Matriz a entregar
                     $matResul = static::MATRICES[$pos];
                 }else{
                     //Identifica posición de matriz para asginar valor correcto
@@ -95,7 +112,51 @@ class WordT extends Controller
         } 
 
          return response()->json([
-            'tetramino_t' => $matResul
+            'tetramino_t' => $matResul,
+            'x' => (int)$request->get('posicionX'),
+            'y' => (int)$request->get('posicionY')
+        ], 200);
+
+    }
+
+    public function displace(Request $request){
+        
+        //Valida los datos enviados
+        $validaror = Validator::make($request->all(), [
+            'tetramino' => 'required|max:25|regex:(^(\[)+(\[)+[0-1]+(\,)+[0-1]+(\,)+[0-1]+(\])+(\,)+(\[)+[0-1]+(\,)+[0-1]+(\,)+[0-1]+(\])+(\,)+(\[)+[0-1]+(\,)+[0-1]+(\,)+[0-1]+(\])+(\]))',
+            'posicionX' => 'required|max:2|regex:([0-9])',
+            'posicionY' => 'required|max:2|regex:([0-9])',
+            'movimiento' => 'required'
+        ]);
+        
+        //Valida si hay error
+        if($validaror->fails()){
+            return response()->json([
+                'error' => $validaror->errors()->first(),
+            ], 401);
+        }
+
+        //Variables necesarias
+        $ejeX = (int)$request->get('posicionX');
+        $ejeY = (int)$request->get('posicionY');
+
+        //Se modifica la posición dependiendo del movimiento
+        switch ($request->get('movimiento')) {
+            case 'left':
+                $ejeX = $ejeX+1;
+                break;
+            case 'right':
+                $ejeX = $ejeX-1;
+                break;
+            case 'down':
+                $ejeY = $ejeY-1;
+                break;
+        }
+        
+         return response()->json([
+            'tetramino_t' => $request->get('tetramino'),
+            'x' => $ejeX,
+            'y' => $ejeY
         ], 200);
 
     }
