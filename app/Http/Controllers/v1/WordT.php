@@ -126,7 +126,7 @@ class WordT extends Controller
             'tetramino' => 'required|max:25|regex:(^(\[)+(\[)+[0-1]+(\,)+[0-1]+(\,)+[0-1]+(\])+(\,)+(\[)+[0-1]+(\,)+[0-1]+(\,)+[0-1]+(\])+(\,)+(\[)+[0-1]+(\,)+[0-1]+(\,)+[0-1]+(\])+(\]))',
             'posicionX' => 'required|max:2|regex:([0-9])',
             'posicionY' => 'required|max:2|regex:([0-9])',
-            'movimiento' => 'required'
+            'movimiento' => 'required','regex:/(left)|(right)|(down)/'
         ]);
         
         //Valida si hay error
@@ -143,13 +143,13 @@ class WordT extends Controller
         //Se modifica la posición dependiendo del movimiento
         switch ($request->get('movimiento')) {
             case 'left':
-                $ejeX = $ejeX+1;
+                $ejeX--;
                 break;
             case 'right':
-                $ejeX = $ejeX-1;
+                $ejeX++;
                 break;
             case 'down':
-                $ejeY = $ejeY-1;
+                $ejeY--;
                 break;
         }
         
