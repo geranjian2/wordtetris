@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/',['uses'=> 'v1\WordT@WordT']);
+Route::post('/',['uses'=> 'v1\WordT@draw']);
 Route::post('/rotate',['uses'=> 'v1\WordT@rotate']);
-Route::post('/displace',['uses'=> 'v1\WordT@displace']);
+Route::post('/move',['uses'=> 'v1\WordT@move']);
 
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
