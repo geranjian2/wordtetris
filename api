@@ -1,0 +1,32 @@
+Introducción :
+Este paquete proporciona API que te permite crear fácilmente el código de tetramino la letra T para colocarla en tablero.
+
+Arquitectura del software = {Elementos, Formas, Motivación/Restricciones}
+
+El elemento  que nosotros tuvimos con nuestro equipo de trabajo  era formar parte de  de tetramino que es con la letra T , forma con equipo no dividimos muchas partes para que trabajó estuviera impecable ,la restricción que nos en pedida era muchas cosas que lo arreglamos en equipo para  llevarlo adelante .
+
+
+El Modelo de 4+1 Vistas:
+El modelo 4+1 se realiza  en html  con un procesador  para el juego solo lo colocamos con letra T .
+
+public function  draw(Request $request)
+{
+    //Valida los datos enviados
+    $validaror = Validator::make($request->all(), [
+        'positionX' => 'required|max:2|regex:([0-9])',
+        'positionY' => 'required|max:2|regex:([0-9])'           
+    ]);
+
+este proceso lo colocamos para que procedimiento de la T  valla a la derecha izquierda bajo y arriba como en el ejemplo . 
+public function rotate(Request $request){
+    
+    //Valida los datos enviados
+    $validaror = Validator::make($request->all(), [
+        'matrix' => 'required|max:25|regex:(^(\[)+(\[)+[0-1]+(\,)+[0-1]+(\,)+[0-1]+(\])+(\,)+(\[)+[0-1]+(\,)+[0-1]+(\,)+[0-1]+(\])+(\,)+(\[)+[0-1]+(\,)+[0-1]+(\,)+[0-1]+(\])+(\]))',
+        'turn' => 'required|regex:([0-1]{1})',
+        'positionX' => 'required|max:2|regex:([0-9])',
+        'positionY' => 'required|max:2|regex:([0-9])'
+    ]);
+
+
+api : App\Http\Controllers\Controller; use Facade\FlareClient\Http\Response; use Illuminate\Http\Request; use Illuminate\Support\Facades\Validato
