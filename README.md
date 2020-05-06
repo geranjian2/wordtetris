@@ -60,7 +60,7 @@ Posteriormente se debe instalar composer dentro del repositorio para generar las
 ## Mas información
 En el siguiente enlace prodrás entronrar toda la información del API y su uso.
 
-http://simisoftware.com/tetrisdocs/#api-Letra_T
+https://simisoftware.com/tetrisdocs/#api-Letra_T
 
 ## Contribuyendo
 Esta contribución se realiza para proyecto de la Universidad bajo el pograma de Calidad de Software.
