@@ -3,5 +3,5 @@
   "version": "0.0.1",
   "description": "",
   "title": "Documentación TETRAMINOL T",
-  "url" : "http://localhost:8000/api"
+  "url" : "http://localhost:8000/api/tetris/"
 }

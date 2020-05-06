@@ -14,8 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',['uses'=> 'v1\WordT@WordT']);
-Route::post('/rotate',['uses'=> 'v1\WordT@rotate']);
+Route::get('/tetris/draw/t',['uses'=> 'v1\WordT@draw']);
+Route::post('/tetris/rotate/t',['uses'=> 'v1\WordT@rotate']);
+Route::post('/tetris/move/t',['uses'=> 'v1\WordT@move']);
 
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {

@@ -1,45 +1,46 @@
 <?php
-class TetraminoT
+class draw
 {
-
+	private $uri='';
 	public function __construct()
 	{
 		
 	}
 
 	/**
-	 * @api {get}  /  Obtener Letra T
-
+	 * @api {get}  draw/t?positionX=0&positionY=0  Obtener 
+	 * @apiParam {Number} positionX posición en x donde quiere que aparezca la ficha.
+	 *@apiParam {Number} positionY posición en y donde quiere que aparezca la ficha.
+	 
 	 * @apiVersion 0.0.1
-	 * @apiName Tetramino T
-	 * @apiGroup Tetramino
-	 * @apiDescription Este rescurso obtiene la letra T para implementar en un Tetris.
+	 * @apiName Letra
+	 * @apiGroup Letra T
+	 * @apiDescription Este recurso es el primero para poder obtener el arreglo de la letra T para ser implementado en juego de tetris
 	 *
 	 *   
 	 *
 	 *
 	 * @apiSuccessExample Respuesta:
 	 * HTTP/1.1 200 OK{
-	 *    {
-     * 	   "tetramino_t": [
-	 * 		 [0,0,0],
-	 *		 [1,1,1],
-	 *		 [0,1,0]
-	 *	    ]
+	 *   {
+     *  "matrix": [
+	 * 	 [0,0,0],
+	 *	 [1,1,1],
+	 *	 [0,1,0]
+	 *	 ],
+	 *	x:0,
+	 *	y:0
 	 *    }
- 	 *	}
+ 	 *}
 	 * @apiSuccessExample Ejemplo JavaScript:
 	 * 
-	 * $.ajax({
-	 *  url: 'http://localhost:8000/api/',
-	 *	type: 'GET',
-	 *	'dataType': "json",
-	 *	success:function(response)
-	 *	{
-	 *	   console.log(response);
-	 *	}
-	 *				
-	 *});
+    fetch('http://localhost:8000/api/tetris/draw/t?positionX=5&positionY=0')
+	.then(function(response) {
+	 return response.json();
+	})
+	.then(function(myJson) {
+	 console.log(myJson);
+	});
 	 *
 	 * @apiSuccessExample Ejemplo PHP:
 	 *   $ch = curl_init();
@@ -64,6 +65,8 @@ class TetraminoT
 	 *
 	 * 
 	 */
+
+
 
 	
 }
