@@ -58,7 +58,7 @@ Posteriormente se debe instalar composer dentro del repositorio para generar las
 #### * Rotar
 
 ## Mas información
-En el siguiente enlace prodrás entronrar toda la información del API y su uso.
+En el siguiente enlace prodrás encontrar toda la información del API y su uso.
 
 https://simisoftware.com/tetrisdocs/#api-Letra_T
 
