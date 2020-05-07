@@ -19,7 +19,7 @@ Posteriormente se debe instalar composer dentro del repositorio para generar las
 ## Uso JavaScript 
 ### Metodo Obtener
 ```javascript
-  fetch('http://localhost:8000/api/tetris/draw/t?positionX=5&positionY=0')
+  fetch('https://simisoftware.com/wordtetris/api/tetris/draw/t?positionX=5&positionY=0')
 	.then(function(response) {
 	 return response.json();
 	})
@@ -31,7 +31,7 @@ Posteriormente se debe instalar composer dentro del repositorio para generar las
 ## Uso php 
 ### Metodo Obtener
 ```php
-  $domain = 'http://localhost:8000/api/tetris/';
+  $domain = 'https://simisoftware.com/wordtetris/api/tetris/';
   $headers = array(
 			'Content-Type:application/json',
 		 );
